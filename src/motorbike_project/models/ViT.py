@@ -19,6 +19,7 @@ class VisionTransformerBase(nn.Module):
 
 if __name__ == '__main__':
     model = VisionTransformerBase()
+    model.load_state_dict(torch.load("result_10kbb_segment/vit/vit-v4.ckpt"))
     x = torch.randn(1, 3, 224, 224)
     y = model(x)
-    print(y.logits)
+    print(y)

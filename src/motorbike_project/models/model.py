@@ -56,7 +56,7 @@ class MotorBikeModel(pl.LightningModule):
             weight=self._create_class_weight(labels_csv_path=labels_csv_path)
         )
         self.lr = lr
-        # self.class_names = ['0', '1', '2', '3']
+        # self.class_names = ['1', '2', '3', '4']
         self.inf_time = []
         self.precision = MulticlassPrecision(num_classes=4)
         self.auroc =  MulticlassAUROC(num_classes=4, average="macro", thresholds=None)
@@ -142,13 +142,13 @@ class MotorBikeModel(pl.LightningModule):
         # Ghi dữ liệu vào excel
         row = []
         row = [self.val_acc(), self.val_loss(), self.val_f1(), sum(self.inf_time), self.val_precision(), 123.01]
-        print("Râu là:", row)
+        print("Validation is:", row)
         #   'acc', 'loss', 'f1', 'inf_time', 'precision', 'auroc'
         # Đọc workbook
         # workbook2 = Workbook('data.xlsx')
         # sheet2 = workbook2.active
         sheet.append(row)
-        workbook.save(f"{self.model_name}_50eps.xlsx")
+        workbook.save(f"{self.model_name}_13kbb4cls_100eps.csv")
         print("Hoàn thành ra excel!")
 
         self.inf_time = []
@@ -165,6 +165,3 @@ class MotorBikeModel(pl.LightningModule):
 
     def configure_optimizers(self):
         return torch.optim.Adam(self.parameters(), lr=self.lr)
-
-
-

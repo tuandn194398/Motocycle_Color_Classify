@@ -134,7 +134,7 @@ def train(args):
         enable_progress_bar=True,       # Enable progress bar
         deterministic=True,             # Reproducibility
         log_every_n_steps=1,            # Log every 1 step
-        precision='16-mixed',                   # Use mixed precision
+        precision='bf16-mixed',                   # Use mixed precision
     )
 
     torch.set_deterministic_debug_mode(True)

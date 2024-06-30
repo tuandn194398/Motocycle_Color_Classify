@@ -1,0 +1,4 @@
+python -m motorbike_project.train --model vit_tiny --max_epochs 100 --folder_path .\data_color_segment\13kbb_segment1234\ --csv_path .\data_color_segment\13kbb_segment1234.csv -bs 32 -nw 11
+
+python -m motorbike_project.predict --model resnet50 --checkpoint .\result_13kbb4cls\resnet50-v11.ckpt -fp .\result_13kbb4cls\13kbb_segment1234\valid\images\ -csv .\result_13kbb4cls\13kbb_segment1234.csv
+
